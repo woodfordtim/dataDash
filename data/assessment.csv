@@ -1,4 +1,4 @@
-,year.group,gender,send,pupil.premium,subject,standard
+,class.group,gender,send,pupil.premium,subject,standard
 1,1,b,send,pp,reading,wts
 2,1,b,notSend,notPP,reading,wts
 3,1,b,notSend,notPP,reading,wts
