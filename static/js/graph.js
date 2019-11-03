@@ -10,6 +10,9 @@ function makeGraphs(error, schoolData) {
     writingGraph(ndx);
     mathematicsGraph(ndx);
     testGraph(ndx);
+    contextGender(ndx);
+    contextPupilPremium(ndx);
+    contextSEND(ndx);
 
     dc.renderAll();
 }
@@ -88,5 +91,47 @@ function testGraph(ndx) {
         .innerRadius(50)
         .dimension(mathsDimension)
         .group(standard_achieved)
+        .legend(dc.legend())
+}
+
+function contextGender(ndx) {
+    var genderDimension = ndx.dimension(dc.pluck('Gender'));
+    var genderComparison = genderDimension.group();
+
+    dc.pieChart("#gender")
+        .width(450)
+        .height(300)
+        .slicesCap(4)
+        .innerRadius(50)
+        .dimension(genderDimension)
+        .group(genderComparison)
+        .legend(dc.legend())
+}
+
+function contextPupilPremium(ndx) {
+    var pupilPremiumDimension = ndx.dimension(dc.pluck('pupilPrem'));
+    var pupilPremiumComparison = pupilPremiumDimension.group();
+
+    dc.pieChart("#pupilPremium")
+        .width(450)
+        .height(300)
+        .slicesCap(4)
+        .innerRadius(50)
+        .dimension(pupilPremiumDimension)
+        .group(pupilPremiumComparison)
+        .legend(dc.legend())
+}
+
+function contextSEND(ndx) {
+    var sendDimension = ndx.dimension(dc.pluck('SEND'));
+    var sendComparison = sendDimension.group();
+
+    dc.pieChart("#SEND")
+        .width(450)
+        .height(300)
+        .slicesCap(4)
+        .innerRadius(50)
+        .dimension(sendDimension)
+        .group(sendComparison)
         .legend(dc.legend())
 }
