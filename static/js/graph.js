@@ -9,6 +9,7 @@ function makeGraphs(error, schoolData) {
     readingGraph(ndx);
     writingGraph(ndx);
     mathematicsGraph(ndx);
+    testGraph(ndx);
 
     dc.renderAll();
 }
@@ -74,4 +75,18 @@ function mathematicsGraph(ndx) {
         .elasticY(true)
         .xAxisLabel("standard")
         .yAxis().ticks(5);
+}
+
+function testGraph(ndx) {
+    var mathsDimension = ndx.dimension(dc.pluck('Mathematics'));
+    var standard_achieved = mathsDimension.group();
+
+    dc.pieChart("#testGraph")
+        .width(450)
+        .height(300)
+        .slicesCap(4)
+        .innerRadius(50)
+        .dimension(mathsDimension)
+        .group(standard_achieved)
+        .legend(dc.legend())
 }
