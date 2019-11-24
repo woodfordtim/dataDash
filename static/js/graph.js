@@ -1,23 +1,36 @@
 queue()
-    .defer(d3.csv, "data/assessment5.csv")
+    .defer(d3.csv, "data/assessment11.csv")
     .await(makeGraphs);
 
 function makeGraphs(error, schoolData) {
     var ndx = crossfilter(schoolData);
 
+    //selectors
     subjectSelector1(ndx);
     subjectSelector2(ndx);
-    readingGraph(ndx);
-    writingGraph(ndx);
-    mathematicsGraph(ndx);
-    testGraph(ndx);
+
+    //context graphs
     contextGender(ndx);
     contextPupilPremium(ndx);
     contextSEND(ndx);
+    contextEAL(ndx);
+
+    //subject graphs
+    readingGraph(ndx);
+    writingGraph(ndx);
+    mathsGraph(ndx);
+
+    //cohort graphs
+    skipperGraph(ndx);
+
+    //average graphs
+    readingAverageGraph(ndx);
+    writingAverageGraph(ndx);
 
     dc.renderAll();
 }
 
+//selectors
 function subjectSelector1(ndx) {
     dim = ndx.dimension(dc.pluck("Cohort"));
     group = dim.group();
@@ -36,67 +49,124 @@ function subjectSelector2(ndx) {
         .group(group); 
 } 
 
-function readingGraph(ndx) {
-    var dim = ndx.dimension(dc.pluck('Reading'));
-    var group = dim.group();
+//context graphs
+function contextGender(ndx) {
+    var genderDimension = ndx.dimension(dc.pluck('Gender'));
+    var genderComparison = genderDimension.group();
 
-
-    /*how do i get a selectMenu to target this chart??
-        dc.selectMenu("#subjectSelector2")
-        .dimension(dim)
-        .group(group); */
-
-    dc.barChart("#reading")
-        .width(400)
+    dc.pieChart("#gender")
         .height(300)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
-        .dimension(dim)
+        .radius(90)
+        .innerRadius(30)
+        .transitionDuration(1500)
+        .dimension(genderDimension)
+        .group(genderComparison)
+        .renderLabel(true)
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
+        .colors(d3.scale.ordinal().range(["red", "#006400"]))
+}
+
+function contextPupilPremium(ndx) {
+    var pupilPremiumDimension = ndx.dimension(dc.pluck('Pupil Premium'));
+    var pupilPremiumComparison = pupilPremiumDimension.group();
+
+    dc.pieChart("#pupilPremium")
+        .height(300)
+        .radius(90)
+        .innerRadius(30)
+        .transitionDuration(1500)
+        .dimension(pupilPremiumDimension)
+        .group(pupilPremiumComparison)
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
+}
+
+function contextSEND(ndx) {
+    var sendDimension = ndx.dimension(dc.pluck('SEND'));
+    var sendComparison = sendDimension.group();
+
+    dc.pieChart("#SEND")
+        .height(300)
+        .radius(90)
+        .innerRadius(30)
+        .transitionDuration(1500)
+        .dimension(sendDimension)
+        .group(sendComparison)
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
+}
+
+function contextEAL(ndx) {
+    var ealDimension = ndx.dimension(dc.pluck('EAL'));
+    var ealComparison = ealDimension.group();
+
+    dc.pieChart("#EAL")
+        .height(300)
+        .radius(90)
+        .innerRadius(30)
+        .transitionDuration(1500)
+        .dimension(ealDimension)
+        .group(ealComparison)
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
+}
+
+//subject graphs
+function readingGraph(ndx) {
+    var readingDim = ndx.dimension(dc.pluck('Reading'));
+    var group = readingDim.group();
+
+    dc.pieChart('#readingGraph')
+        .height(400)
+        .radius(150)
+        .innerRadius(40)
+        .transitionDuration(1500)
+        .dimension(readingDim)
         .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("standard")
-        .yAxis().ticks(5);
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
 }
 
 function writingGraph(ndx) {
-    var dim = ndx.dimension(dc.pluck('Writing'));
-    var group = dim.group();
+    var writingDim = ndx.dimension(dc.pluck('Writing'));
+    var writingComparison = writingDim.group();
 
-    dc.barChart("#writing")
-        .width(400)
-        .height(300)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
-        .dimension(dim)
-        .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("standard")
-        .yAxis().ticks(5);
+    dc.pieChart("#writingGraph")
+        .height(400)
+        .radius(150)
+        .innerRadius(40)
+        .transitionDuration(1500)
+        .dimension(writingDim)
+        .group(writingComparison)
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
 }
 
-function mathematicsGraph(ndx) {
-    var dim = ndx.dimension(dc.pluck('Mathematics'));
-    var group = dim.group();
+function mathsGraph(ndx) {
+    var mathematicsDim = ndx.dimension(dc.pluck('Mathematics'));
+    var group = mathematicsDim.group();
 
-    dc.barChart("#maths")
-        .width(400)
-        .height(300)
-        .margins({ top: 10, right: 50, bottom: 30, left: 50 })
-        .dimension(dim)
+    dc.pieChart("#mathsGraph")
+        .height(400)
+        .radius(150)
+        .innerRadius(40)
+        .transitionDuration(1500)
+        .dimension(mathematicsDim)
         .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("Standard")
-        .yAxis().ticks(5);
+        .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
 }
 
-function testGraph(ndx) {
+//cohort graphs 
+
+//This section is supposed to show each cohort so that comparisons can be made between cohorts. This helps 
+//to identify which cohort is doing better or worse than others. The way my current dashboard is set up only
+//allows me to see one cohort at a time- which is ok- but was also hoping for the former but have had trouble
+//trying to code this out!
+
+// why does this graph not return any 0s from Skipper 'Reading' data? Something is wrong with this code block
+function skipperGraph(ndx) {
     var readingDimension = ndx.dimension(dc.pluck("Reading"));
     var standard_achieved_Skipper = readingDimension.group().reduceSum(function (d) {
         if (d.Cohort === 'Skipper') {
@@ -106,92 +176,83 @@ function testGraph(ndx) {
         }
     });
 
-    dc.pieChart("#testGraph")
-        .width(450)
+    //how do I check code with a console.log?
+    //console.log(skipperGraph);
+
+    /*dc.pieChart("#skipperGraph")
         .height(300)
-        .innerRadius(50)
+        .radius(90)
+        .innerRadius(30)
+        .transitionDuration(1500)
         .dimension(readingDimension)
         .group(standard_achieved_Skipper)
         .legend(dc.legend())
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; }) */
 }
 
-function testGraph2(ndx) {
-    var readingDimension = ndx.dimension(dc.pluck("Reading"));
-    var standard_achieved_Admiral = readingDimension.group().reduce(
+//average graphs 
+function readingAverageGraph(ndx) {
+    var readingDim = ndx.dimension(dc.pluck('Cohort'));
+    var group = readingDim.group().reduce(
 
-        // Add a Fact
-        function(p, v) {
+        //Add a fact
+        function (p, v) {
             p.count++;
             p.total += v.Reading;
             p.average = p.total / p.count;
             return p;
         },
-        // Remove a Fact
-        function(p, v) {
+
+        //What is a remover? And why is it needed??
+        //Remove a Fact
+        function (p, v) {
             p.count--;
             if (p.count == 0) {
                 p.total = 0;
                 p.average = 0;
             } else {
-                p.total -= v.spend;
+                p.total -= v.Reading;
                 p.average = p.total / p.count;
             }
             return p;
         },
-        // Initialise the Reducer
+
+        //Initialise the reducer
         function () {
-            return { count: 0, total: 0, average: 0 };
+            return {count: 0, total: 0, average: 0};
         }
-            
-            
-            );
+    );
 
-    dc.pieChart("#testGraph2")
-        .width(450)
+    //console.log(readingAverageGraph());
+  
+    dc.barChart("#readingAverageGraph")
+        .width(400)
         .height(300)
-        .innerRadius(50)
-        .dimension(readingDimension)
-        .group(standard_achieved_Skipper)
-        .legend(dc.legend())
-    }
-
-function contextGender(ndx) {
-    var genderDimension = ndx.dimension(dc.pluck('Gender'));
-    var genderComparison = genderDimension.group();
-
-    dc.pieChart("#gender")
-        .height(200)
-        .radius(90)
-        .innerRadius(30)
-        .dimension(genderDimension)
-        .group(genderComparison)
-        .legend(dc.legend())
+        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+        .dimension(readingDim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Cohort")
+        .yAxis().ticks(5); 
 }
 
-function contextPupilPremium(ndx) {
-    var pupilPremiumDimension = ndx.dimension(dc.pluck('Pupil Premium'));
-    var pupilPremiumComparison = pupilPremiumDimension.group();
+function writingAverageGraph(ndx) {
+    var readingDim = ndx.dimension(dc.pluck('Cohort'));
+    var group = readingDim.group().reduceSum(dc.pluck('Writing'));
 
-    dc.pieChart("#pupilPremium")
-        .width(450)
+    dc.barChart("#writingAverageGraph")
+        .width(400)
         .height(300)
-        .slicesCap(4)
-        .innerRadius(50)
-        .dimension(pupilPremiumDimension)
-        .group(pupilPremiumComparison)
-        .legend(dc.legend())
-}
-
-function contextSEND(ndx) {
-    var sendDimension = ndx.dimension(dc.pluck('SEND'));
-    var sendComparison = sendDimension.group();
-
-    dc.pieChart("#SEND")
-        .width(450)
-        .height(300)
-        .slicesCap(4)
-        .innerRadius(50)
-        .dimension(sendDimension)
-        .group(sendComparison)
-        .legend(dc.legend())
+        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+        .dimension(readingDim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Cohort")
+        .yAxis().ticks(5); 
 }
