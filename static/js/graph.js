@@ -26,6 +26,7 @@ function makeGraphs(error, schoolData) {
     //average graphs
     readingAverageGraph(ndx);
     writingAverageGraph(ndx);
+    mathsAverageGraph(ndx);
 
     dc.renderAll();
 }
@@ -179,7 +180,7 @@ function skipperGraph(ndx) {
     //how do I check code with a console.log?
     //console.log(skipperGraph);
 
-    /*dc.pieChart("#skipperGraph")
+    dc.pieChart("#skipperGraph")
         .height(300)
         .radius(90)
         .innerRadius(30)
@@ -187,7 +188,7 @@ function skipperGraph(ndx) {
         .dimension(readingDimension)
         .group(standard_achieved_Skipper)
         .legend(dc.legend())
-        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; }) */
+        .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; }) 
 }
 
 //average graphs 
@@ -231,7 +232,7 @@ function readingAverageGraph(ndx) {
         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
         .dimension(readingDim)
         .group(group)
-        .transitionDuration(500)
+        .transitionDuration(1500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
         .elasticY(true)
@@ -244,6 +245,24 @@ function writingAverageGraph(ndx) {
     var group = readingDim.group().reduceSum(dc.pluck('Writing'));
 
     dc.barChart("#writingAverageGraph")
+        .width(400)
+        .height(300)
+        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+        .dimension(readingDim)
+        .group(group)
+        .transitionDuration(500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Cohort")
+        .yAxis().ticks(5); 
+}
+
+function mathsAverageGraph(ndx) {
+    var readingDim = ndx.dimension(dc.pluck('Cohort'));
+    var group = readingDim.group().reduceSum(dc.pluck('Mathematics'));
+
+    dc.barChart("#mathsAverageGraph")
         .width(400)
         .height(300)
         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
