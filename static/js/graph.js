@@ -5,6 +5,16 @@ queue()
 function makeGraphs(error, schoolData) {
     var ndx = crossfilter(schoolData);
 
+    schoolData.forEach(function(d){
+        d.Reading = parseInt(d.Reading);
+
+    schoolData.forEach(function(d){
+        d.Writing= parseInt(d.Writing);
+
+    schoolData.forEach(function(d){
+        d.Writing= parseInt(d.Writing);
+    })
+
     //selectors
     subjectSelector1(ndx);
     subjectSelector2(ndx);
@@ -29,7 +39,7 @@ function makeGraphs(error, schoolData) {
     mathsAverageGraph(ndx);
 
     dc.renderAll();
-}
+})
 
 //selectors
 function subjectSelector1(ndx) {
@@ -232,8 +242,8 @@ function readingAverageGraph(ndx) {
         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
         .dimension(readingDim)
         .group(averageReading)
-        .valueAccessor(function(d){
-            return d.value.average.toFixed(2);
+        .valueAccessor(function(p){
+            return p.value.average.toFixed(1);
         })
         .transitionDuration(1500)
         .x(d3.scale.ordinal())
@@ -244,41 +254,102 @@ function readingAverageGraph(ndx) {
 }
 
 
+// function writingAverageGraph(ndx) {
+//     var writingDim = ndx.dimension(dc.pluck('Cohort'));
 
+// //Add a fact
+//         function add_item (p, v) {
+//             p.count++;
+//             p.total += v.Reading;
+//             p.average = p.total / p.count;
+//             return p;
+//         }
 
+//         //What is a remover? And why is it needed??
+//         //Remove a Fact
+//         function remove_item (p, v) {
+//             p.count--;
+//             if (p.count == 0) {
+//                 p.total = 0;
+//                 p.average = 0;
+//             } else {
+//                 p.total -= v.Reading;
+//                 p.average = p.total / p.count;
+//             }
+//             return p;
+//         }
 
-function writingAverageGraph(ndx) {
-    var readingDim = ndx.dimension(dc.pluck('Cohort'));
-    var group = readingDim.group().reduceSum(dc.pluck('Writing'));
+//         //Initialise the reducer
+//         function initialise () {
+//             return {count: 0, total: 0, average: 0};
+//         }
 
-    dc.barChart("#writingAverageGraph")
-        .width(400)
-        .height(300)
-        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
-        .dimension(readingDim)
-        .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("Cohort")
-        .yAxis().ticks(5); 
-}
+//     var averageWriting = writingDim.group().reduce(add_item, remove_item, initialise);
 
-function mathsAverageGraph(ndx) {
-    var readingDim = ndx.dimension(dc.pluck('Cohort'));
-    var group = readingDim.group().reduceSum(dc.pluck('Mathematics'));
+//     //console.log(readingAverageGraph());
+  
+//     dc.barChart("#writingAverageGraph")
+//         .width(400)
+//         .height(300)
+//         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+//         .dimension(writingDim)
+//         .group(averageWriting)
+//         .valueAccessor(function(p){
+//             return p.value.average.toFixed(1);
+//         })
+//         .transitionDuration(1500)
+//         .x(d3.scale.ordinal())
+//         .xUnits(dc.units.ordinal)
+//         .elasticY(true)
+//         .xAxisLabel("Cohort")
+//         .yAxis().ticks(5); 
+// }
 
-    dc.barChart("#mathsAverageGraph")
-        .width(400)
-        .height(300)
-        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
-        .dimension(readingDim)
-        .group(group)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .elasticY(true)
-        .xAxisLabel("Cohort")
-        .yAxis().ticks(5); 
-}
+// function mathsAverageGraph(ndx) {
+//     var readingDim = ndx.dimension(dc.pluck('Cohort'));
+
+// //Add a fact
+//         function add_item (p, v) {
+//             p.count++;
+//             p.total += v.Reading;
+//             p.average = p.total / p.count;
+//             return p;
+//         }
+
+//         //What is a remover? And why is it needed??
+//         //Remove a Fact
+//         function remove_item (p, v) {
+//             p.count--;
+//             if (p.count == 0) {
+//                 p.total = 0;
+//                 p.average = 0;
+//             } else {
+//                 p.total -= v.Reading;
+//                 p.average = p.total / p.count;
+//             }
+//             return p;
+//         }
+
+//         //Initialise the reducer
+//         function initialise () {
+//             return {count: 0, total: 0, average: 0};
+//         }
+
+//     var averageMaths = mathsDim.group().reduce(add_item, remove_item, initialise);
+
+//      dc.barChart("#mathsAverageGraph")
+//         .width(400)
+//         .height(300)
+//         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+//         .dimension(writingDim)
+//         .group(averageWriting)
+//         .valueAccessor(function(p){
+//             return p.value.average.toFixed(1);
+//         })
+//         .transitionDuration(1500)
+//         .x(d3.scale.ordinal())
+//         .xUnits(dc.units.ordinal)
+//         .elasticY(true)
+//         .xAxisLabel("Cohort")
+//         .yAxis().ticks(5); 
+// }
