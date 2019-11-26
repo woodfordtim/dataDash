@@ -194,19 +194,18 @@ function skipperGraph(ndx) {
 //average graphs 
 function readingAverageGraph(ndx) {
     var readingDim = ndx.dimension(dc.pluck('Cohort'));
-    var group = readingDim.group().reduce(
 
         //Add a fact
-        function (p, v) {
+        function add_item (p, v) {
             p.count++;
             p.total += v.Reading;
             p.average = p.total / p.count;
             return p;
-        },
+        }
 
         //What is a remover? And why is it needed??
         //Remove a Fact
-        function (p, v) {
+        function remove_item (p, v) {
             p.count--;
             if (p.count == 0) {
                 p.total = 0;
@@ -216,13 +215,14 @@ function readingAverageGraph(ndx) {
                 p.average = p.total / p.count;
             }
             return p;
-        },
+        }
 
         //Initialise the reducer
-        function () {
+        function initialise () {
             return {count: 0, total: 0, average: 0};
         }
-    );
+
+    var averageReading = readingDim.group().reduce(add_item, remove_item, initialise);
 
     //console.log(readingAverageGraph());
   
@@ -231,7 +231,10 @@ function readingAverageGraph(ndx) {
         .height(300)
         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
         .dimension(readingDim)
-        .group(group)
+        .group(averageReading)
+        .valueAccessor(function(d){
+            return d.value.average.toFixed(2);
+        })
         .transitionDuration(1500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
@@ -239,6 +242,10 @@ function readingAverageGraph(ndx) {
         .xAxisLabel("Cohort")
         .yAxis().ticks(5); 
 }
+
+
+
+
 
 function writingAverageGraph(ndx) {
     var readingDim = ndx.dimension(dc.pluck('Cohort'));
