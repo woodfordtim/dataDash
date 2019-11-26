@@ -2,17 +2,20 @@ queue()
     .defer(d3.csv, "data/assessment11.csv")
     .await(makeGraphs);
 
+// parse data to change it to integers. Is there a more efficient method?
 function makeGraphs(error, schoolData) {
     var ndx = crossfilter(schoolData);
 
     schoolData.forEach(function(d){
-        d.Reading = parseInt(d.Reading);
+        d.Reading = parseInt(d.Reading)
+    }),
 
     schoolData.forEach(function(d){
-        d.Writing= parseInt(d.Writing);
+        d.Writing = parseInt(d.Writing)
+    }),
 
     schoolData.forEach(function(d){
-        d.Writing= parseInt(d.Writing);
+        d.Mathematics = parseInt(d.Mathematics)
     })
 
     //selectors
@@ -39,7 +42,7 @@ function makeGraphs(error, schoolData) {
     mathsAverageGraph(ndx);
 
     dc.renderAll();
-})
+}
 
 //selectors
 function subjectSelector1(ndx) {
@@ -250,106 +253,105 @@ function readingAverageGraph(ndx) {
         .xUnits(dc.units.ordinal)
         .elasticY(true)
         .xAxisLabel("Cohort")
-        .yAxis().ticks(5); 
+        .yAxis().ticks(10); 
 }
 
+function writingAverageGraph(ndx) {
+    var writingDim = ndx.dimension(dc.pluck('Cohort'));
 
-// function writingAverageGraph(ndx) {
-//     var writingDim = ndx.dimension(dc.pluck('Cohort'));
+//Add a fact
+        function add_item (p, v) {
+            p.count++;
+            p.total += v.Writing;
+            p.average = p.total / p.count;
+            return p;
+        }
 
-// //Add a fact
-//         function add_item (p, v) {
-//             p.count++;
-//             p.total += v.Reading;
-//             p.average = p.total / p.count;
-//             return p;
-//         }
+        //What is a remover? And why is it needed??
+        //Remove a Fact
+        function remove_item (p, v) {
+            p.count--;
+            if (p.count == 0) {
+                p.total = 0;
+                p.average = 0;
+            } else {
+                p.total -= v.Writing;
+                p.average = p.total / p.count;
+            }
+            return p;
+        }
 
-//         //What is a remover? And why is it needed??
-//         //Remove a Fact
-//         function remove_item (p, v) {
-//             p.count--;
-//             if (p.count == 0) {
-//                 p.total = 0;
-//                 p.average = 0;
-//             } else {
-//                 p.total -= v.Reading;
-//                 p.average = p.total / p.count;
-//             }
-//             return p;
-//         }
+        //Initialise the reducer
+        function initialise () {
+            return {count: 0, total: 0, average: 0};
+        }
 
-//         //Initialise the reducer
-//         function initialise () {
-//             return {count: 0, total: 0, average: 0};
-//         }
+    var averageWriting = writingDim.group().reduce(add_item, remove_item, initialise);
 
-//     var averageWriting = writingDim.group().reduce(add_item, remove_item, initialise);
-
-//     //console.log(readingAverageGraph());
+    //console.log(readingAverageGraph());
   
-//     dc.barChart("#writingAverageGraph")
-//         .width(400)
-//         .height(300)
-//         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
-//         .dimension(writingDim)
-//         .group(averageWriting)
-//         .valueAccessor(function(p){
-//             return p.value.average.toFixed(1);
-//         })
-//         .transitionDuration(1500)
-//         .x(d3.scale.ordinal())
-//         .xUnits(dc.units.ordinal)
-//         .elasticY(true)
-//         .xAxisLabel("Cohort")
-//         .yAxis().ticks(5); 
-// }
+    dc.barChart("#writingAverageGraph")
+        .width(400)
+        .height(300)
+        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+        .dimension(writingDim)
+        .group(averageWriting)
+        .valueAccessor(function(p){
+            return p.value.average.toFixed(1);
+        })
+        .transitionDuration(1500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Cohort")
+        .yAxis().ticks(10); 
+}
 
-// function mathsAverageGraph(ndx) {
-//     var readingDim = ndx.dimension(dc.pluck('Cohort'));
+function mathsAverageGraph(ndx) {
+    var mathsDim = ndx.dimension(dc.pluck('Cohort'));
 
-// //Add a fact
-//         function add_item (p, v) {
-//             p.count++;
-//             p.total += v.Reading;
-//             p.average = p.total / p.count;
-//             return p;
-//         }
+//Add a fact
+        function add_item (p, v) {
+            p.count++;
+            p.total += v.Mathematics;
+            p.average = p.total / p.count;
+            return p;
+        }
 
-//         //What is a remover? And why is it needed??
-//         //Remove a Fact
-//         function remove_item (p, v) {
-//             p.count--;
-//             if (p.count == 0) {
-//                 p.total = 0;
-//                 p.average = 0;
-//             } else {
-//                 p.total -= v.Reading;
-//                 p.average = p.total / p.count;
-//             }
-//             return p;
-//         }
+        //What is a remover? And why is it needed??
+        //Remove a Fact
+        function remove_item (p, v) {
+            p.count--;
+            if (p.count == 0) {
+                p.total = 0;
+                p.average = 0;
+            } else {
+                p.total -= v.Mathematics;
+                p.average = p.total / p.count;
+            }
+            return p;
+        }
 
-//         //Initialise the reducer
-//         function initialise () {
-//             return {count: 0, total: 0, average: 0};
-//         }
+        //Initialise the reducer
+        function initialise () {
+            return {count: 0, total: 0, average: 0};
+        }
 
-//     var averageMaths = mathsDim.group().reduce(add_item, remove_item, initialise);
+    var averageMaths = mathsDim.group().reduce(add_item, remove_item, initialise);
 
-//      dc.barChart("#mathsAverageGraph")
-//         .width(400)
-//         .height(300)
-//         .margins({ top: 10, right: 60, bottom: 30, left: 60 })
-//         .dimension(writingDim)
-//         .group(averageWriting)
-//         .valueAccessor(function(p){
-//             return p.value.average.toFixed(1);
-//         })
-//         .transitionDuration(1500)
-//         .x(d3.scale.ordinal())
-//         .xUnits(dc.units.ordinal)
-//         .elasticY(true)
-//         .xAxisLabel("Cohort")
-//         .yAxis().ticks(5); 
-// }
+     dc.barChart("#mathsAverageGraph")
+        .width(400)
+        .height(300)
+        .margins({ top: 10, right: 60, bottom: 30, left: 60 })
+        .dimension(mathsDim)
+        .group(averageMaths)
+        .valueAccessor(function(p){
+            return p.value.average.toFixed(1);
+        })
+        .transitionDuration(1500)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .elasticY(true)
+        .xAxisLabel("Cohort")
+        .yAxis().ticks(10); 
+}
