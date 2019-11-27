@@ -9,99 +9,131 @@
 
 	<link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
 	<link rel="stylesheet" href="static/css/dc.min.css" type="text/css" />
+	<link rel="stylesheet" href="static/css/style.css" type="text/css" />
 
 </head>
 
 <body>
 
-	<div class="container">
-		<div class="row">
-			<h1>School Data Dashboard</h1>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">School Data Dashboard</a>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Support</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Contact Us</a>
+				</li>
+			</ul>
 		</div>
+	</nav>
 
-        <!--Subject selectors -->
-		<div class="row">
-			<div class="col-md-offset-5" id="subjectSelector1"></div>
-			<div class="col-md-offset-5" id="subjectSelector2"></div>
-		</div>
+	<main>
+		<section class="title">
+			<div class="container-fluid">
+				<div class="row">
+					<h1 class="col-md-6 page-title">School Data Dashboard</h1>
+                    <div class="col-md-2 offset-md-2" id="subjectSelector1"></div>
+				</div>
+                <div class="row">
+                    <p class="col-md-6 page-title">Welcome back, Tim...</p>
+                </div>
+            </div>
+		</section>
 
-        <!--Comtext graphs -->
-		<div class="row">
-			<h2 class="col-md-offset-5">Context Information</h2>
-		</div>
+		<section class="section">
+			<!--Comtext graphs -->
+			<div class="container-fluid">
+				<div class="row">
+					<h3 class="col-md-2">Context</h3>
+					<div class="col-md-2 text-center" id="gender"></div>
+					<div class="col-md-2" id="SEND"></div>
+					<div class="col-md-2" id="pupilPremium"></div>
+					<div class="col-md-2" id="EAL"></div>
+				</div>
+				<div class="row">
+					<h5 class="col-md-2 offset-md-2 text-center">Gender</h5>
+					<h5 class="col-md-2 text-center">SEND</h5>
+					<h5 class="col-md-2 text-center">Pupil Premium</h5>
+					<h5 class="col-md-2 text-center">EAL</h5>
+				</div>
+			</div>
+		</section>
 
-		<div class="row">
-			<h4 class="col-md-3">Gender</h4>
-			<h4 class="col-md-3">SEND</h4>
-			<h4 class="col-md-3">Pupil Premium</h4>
-			<h4 class="col-md-3">EAL</h4>
-		</div>
-
-		<div class="row">
-			<div class="col-md-3" id="gender"></div>
-			<div class="col-md-3" id="SEND"></div>
-			<div class="col-md-3" id="pupilPremium"></div>
-			<div class="col-md-3" id="EAL"></div>
-		</div>
-
-        <!--Subject graphs -->
-        <div class="row">
-			<h2 class="col-md-offset-5">Subject Graphs</h2>
-		</div>
-
-		<div class="row">
-			<h4 class="col-md-4">Reading</h4>
-			<h4 class="col-md-4">Writing</h4>
-			<h4 class="col-md-4">Mathematics</h4>
-		</div>
-
-		<div class="row">
-			<div class="col-md-4" id="readingGraph"></div>
-			<div class="col-md-4" id="writingGraph"></div>
-			<div class="col-md-4" id="mathsGraph"></div>
-		</div>
-
-        <!--Cohort graphs -->
-        <div class="row">
-			<h2 class="col-md-offset-5">Cohort Graphs</h2>
-		</div>
-
-        <div class="row">
-            <h4 class="col-md-4">Skipper</h4>
-			<h4 class="col-md-4">Admiral</h4>
-        </div>
-
-        <div class="row">
-			<div class="col-md-4" id="skipperGraph"></div>
-			<div class="col-md-4" id=""></div>
-			<div class="col-md-4" id=""></div>
-		</div>
-
-        <!--Average graphs -->
-        <div class="row">
-			<h2 class="col-md-offset-5">Average Graphs</h2>
-		</div>
-
-    <div class="row">
-            <h4 class="col-md-4">Average for Reading</h4>
-            <h4 class="col-md-4">Average for Writing</h4>
-            <h4 class="col-md-4">Average for Mathematics</h4>
-        </div>
-
-        <div class="row">
-			<div class="col-md-4" id="readingAverageGraph"></div>
-            <div class="col-md-4" id="writingAverageGraph"></div>
-            <div class="col-md-4" id="mathsAverageGraph"></div>
-		</div>
-	</div>
+		<section class="section">
+			<!--Subject graphs -->
+            <!-- How do I center the graphs in order to align everything?-->
+			<div class="container-fluid">
+				<div class="row">
+                    <h3 class="col-md-2">Subject Graphs</h3>
+                    <div class="col-md-3" id="readingGraph"></div>
+					<div class="col-md-3 text-center" id="writingGraph"></div>
+					<div class="col-md-3" id="mathsGraph"></div>
+				</div>
+				<div class="row">
+					<h5 class="col-md-3 offset-md-2 text-center">Reading</h5>
+					<h5 class="col-md-3 text-center">Writing</h5>
+					<h5 class="col-md-3 text-center">Mathematics</h5>
+				</div>
+			</div>
+		</section>
 
 
-	<script type="text/javascript" src="static/js/d3.min.js"></script>
-	<script type="text/javascript" src="static/js/crossfilter.min.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.js"></script> -->
-	<script type="text/javascript" src="static/js/dc.min.js"></script>
-	<script type="text/javascript" src="static/js/queue.min.js"></script>
-	<script type="text/javascript" src="static/js/graph.js"></script>
+		<section class="section">
+			<!--Cohort graphs -->
+			<div class="container-fluid">
+				<div class="row">
+					<h2 class="col-md-offset-5">Cohort Graphs</h2>
+				</div>
+
+				<div class="row">
+					<h5 class="col-md-4">Skipper</h5>
+					<h5 class="col-md-4">Admiral</h5>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4" id="skipperGraph"></div>
+					<div class="col-md-4" id=""></div>
+					<div class="col-md-4" id=""></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<!--Average graphs -->
+			<div class="container-fluid">
+				<div class="row">
+					<h2 class="col-md-offset-5">Average Graphs</h2>
+				</div>
+
+				<div class="row">
+					<h5 class="col-md-4">Average for Reading</h5>
+					<h5 class="col-md-4">Average for Writing</h5>
+					<h5 class="col-md-4">Average for Mathematics</h5>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4" id="readingAverageGraph"></div>
+					<div class="col-md-4" id="writingAverageGraph"></div>
+					<div class="col-md-4" id="mathsAverageGraph"></div>
+				</div>
+			</div>
+		</section>
+
+		<script type="text/javascript" src="static/js/d3.min.js"></script>
+		<script type="text/javascript" src="static/js/crossfilter.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.js"></script> -->
+		<script type="text/javascript" src="static/js/dc.min.js"></script>
+		<script type="text/javascript" src="static/js/queue.min.js"></script>
+		<script type="text/javascript" src="static/js/graph.js"></script>
+
+	</main>
+
 
 </body>
 

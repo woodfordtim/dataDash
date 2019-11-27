@@ -69,9 +69,9 @@ function contextGender(ndx) {
     var genderComparison = genderDimension.group();
 
     dc.pieChart("#gender")
-        .height(300)
-        .radius(90)
-        .innerRadius(30)
+        .height(230)
+        .radius(80)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(genderDimension)
         .group(genderComparison)
@@ -86,9 +86,9 @@ function contextPupilPremium(ndx) {
     var pupilPremiumComparison = pupilPremiumDimension.group();
 
     dc.pieChart("#pupilPremium")
-        .height(300)
-        .radius(90)
-        .innerRadius(30)
+        .height(230)
+        .radius(80)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(pupilPremiumDimension)
         .group(pupilPremiumComparison)
@@ -101,13 +101,14 @@ function contextSEND(ndx) {
     var sendComparison = sendDimension.group();
 
     dc.pieChart("#SEND")
-        .height(300)
-        .radius(90)
-        .innerRadius(30)
+        .height(230)
+        .radius(80)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(sendDimension)
         .group(sendComparison)
         .legend(dc.legend())
+        //.legend(dc.legend().itemHeight(20).gap(5).x(200).y(60))
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
 }
 
@@ -116,9 +117,9 @@ function contextEAL(ndx) {
     var ealComparison = ealDimension.group();
 
     dc.pieChart("#EAL")
-        .height(300)
-        .radius(90)
-        .innerRadius(30)
+        .height(230)
+        .radius(80)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(ealDimension)
         .group(ealComparison)
@@ -132,9 +133,9 @@ function readingGraph(ndx) {
     var group = readingDim.group();
 
     dc.pieChart('#readingGraph')
-        .height(400)
-        .radius(150)
-        .innerRadius(40)
+        .height(230)
+        .radius(100)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(readingDim)
         .group(group)
@@ -147,13 +148,14 @@ function writingGraph(ndx) {
     var writingComparison = writingDim.group();
 
     dc.pieChart("#writingGraph")
-        .height(400)
-        .radius(150)
-        .innerRadius(40)
+        .height(230)
+        .radius(100)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(writingDim)
         .group(writingComparison)
         .legend(dc.legend())
+        //.legend(dc.legend().itemHeight(20).gap(5).x(10).y(60))
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
 }
 
@@ -162,9 +164,9 @@ function mathsGraph(ndx) {
     var group = mathematicsDim.group();
 
     dc.pieChart("#mathsGraph")
-        .height(400)
-        .radius(150)
-        .innerRadius(40)
+        .height(220)
+        .radius(100)
+        .innerRadius(0)
         .transitionDuration(1500)
         .dimension(mathematicsDim)
         .group(group)
