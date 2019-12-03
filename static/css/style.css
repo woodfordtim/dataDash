@@ -11,21 +11,26 @@ body {
     padding-top: 10px;
 }
 
-.page-title, #subjectSelector {
+.page-title {
 	display: inline-block;	
 	float: none;
 	margin: 10px;
 }
 
+.sub-title {
+    display: inline-block;	
+	float: none;
+    margin-left: 10px;
+}
+
 .dc-select-menu {
     background-color: #ffffff;
-    margin: 20px;
 }
 
 .section {
     border-radius: 10px;
     border: 1px solid #e6e6e6;
-    margin: 40px;
+    margin: 30px 60px;
     padding: 20px;
     background-color: #ffffff;
     -moz-box-shadow: 2px 2px 20px 1px #F0F0F0; 

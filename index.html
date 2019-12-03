@@ -38,10 +38,11 @@
 			<div class="container-fluid">
 				<div class="row">
 					<h1 class="col-md-6 page-title">School Data Dashboard</h1>
-                    <div class="col-md-2 offset-md-2" id="subjectSelector1"></div>
 				</div>
                 <div class="row">
-                    <p class="col-md-6 page-title">Welcome back, Tim...</p>
+                    <p class="col-md-7 sub-title">Welcome back, Tim...</p>
+                    <div class="col-md-2 selector text-right"><h6>Select your cohort:</h6></div>
+                    <div class="col-md-2" id="subjectSelector1"></div>
                 </div>
             </div>
 		</section>
@@ -50,17 +51,16 @@
 			<!--Comtext graphs -->
 			<div class="container-fluid">
 				<div class="row">
-					<h3 class="col-md-2">Context</h3>
-					<div class="col-md-2 text-center" id="gender"></div>
-					<div class="col-md-2" id="SEND"></div>
-					<div class="col-md-2" id="pupilPremium"></div>
-					<div class="col-md-2" id="EAL"></div>
+					<div class="col-md-3"><h3>Context</h3><p>These graphs show the context spread of students. 
+                    Click on the segments to filter by each context.</p></div> 
+					<div class="col-md-3 text-center" id="gender"></div>
+					<div class="col-md-3" id="SEND"></div>
+					<div class="col-md-3" id="pupilPremium"></div>
 				</div>
 				<div class="row">
-					<h5 class="col-md-2 offset-md-2 text-center">Gender</h5>
-					<h5 class="col-md-2 text-center">SEND</h5>
-					<h5 class="col-md-2 text-center">Pupil Premium</h5>
-					<h5 class="col-md-2 text-center">EAL</h5>
+					<h5 class="col-md-3 offset-md-3">Gender</h5>
+					<h5 class="col-md-3">SEND</h5>
+					<h5 class="col-md-3">Pupil Premium</h5>
 				</div>
 			</div>
 		</section>
@@ -70,57 +70,56 @@
             <!-- How do I center the graphs in order to align everything?-->
 			<div class="container-fluid">
 				<div class="row">
-                    <h3 class="col-md-2">Subject Graphs</h3>
+                    <div class="col-md-3"><h3>Subject Graphs</h3><p>These graphs show the attainment spread for each subject. 
+                    Click on the segments to filter results.<br><br>
+                    (3) Above average<br>
+                    (2) Expected standard<br>
+                    (1) Working towards<br>
+                    (0) Below</p></div> 
                     <div class="col-md-3" id="readingGraph"></div>
 					<div class="col-md-3 text-center" id="writingGraph"></div>
 					<div class="col-md-3" id="mathsGraph"></div>
 				</div>
 				<div class="row">
-					<h5 class="col-md-3 offset-md-2 text-center">Reading</h5>
-					<h5 class="col-md-3 text-center">Writing</h5>
-					<h5 class="col-md-3 text-center">Mathematics</h5>
+					<h5 class="col-md-3 offset-md-3">Reading</h5>
+					<h5 class="col-md-3">Writing</h5>
+					<h5 class="col-md-3">Mathematics</h5>
 				</div>
 			</div>
 		</section>
 
-
-		<section class="section">
-			<!--Cohort graphs -->
+		<!-- <section class="section">
+			Cohort graphs 
 			<div class="container-fluid">
 				<div class="row">
 					<h2 class="col-md-offset-5">Cohort Graphs</h2>
 				</div>
-
 				<div class="row">
 					<h5 class="col-md-4">Skipper</h5>
 					<h5 class="col-md-4">Admiral</h5>
 				</div>
-
 				<div class="row">
 					<div class="col-md-4" id="skipperGraph"></div>
 					<div class="col-md-4" id=""></div>
 					<div class="col-md-4" id=""></div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 		<section class="section">
 			<!--Average graphs -->
 			<div class="container-fluid">
 				<div class="row">
-					<h2 class="col-md-offset-5">Average Graphs</h2>
+                    <div class="col-md-3"><h3>Average by Cohort</h3><p>These graphs show the average attainment for 
+                    each cohort with <b>2</b> being the expected standard. Click on the bars to filter results.</p></div> 
+					<div class="col-md-3" id="readingAverageGraph"></div>
+					<div class="col-md-3" id="writingAverageGraph"></div>
+					<div class="col-md-3" id="mathsAverageGraph"></div>
 				</div>
-
-				<div class="row">
-					<h5 class="col-md-4">Average for Reading</h5>
-					<h5 class="col-md-4">Average for Writing</h5>
-					<h5 class="col-md-4">Average for Mathematics</h5>
-				</div>
-
-				<div class="row">
-					<div class="col-md-4" id="readingAverageGraph"></div>
-					<div class="col-md-4" id="writingAverageGraph"></div>
-					<div class="col-md-4" id="mathsAverageGraph"></div>
+                <div class="row">
+					<h5 class="col-md-3 offset-md-3">Average for Reading</h5>
+					<h5 class="col-md-3">Average for Writing</h5>
+					<h5 class="col-md-3">Average for Mathematics</h5>
 				</div>
 			</div>
 		</section>
