@@ -11,6 +11,10 @@ body {
     padding-top: 10px;
 }
 
+h5 {
+    padding-bottom: 10px;
+}
+
 .page-title {
 	display: inline-block;	
 	float: none;
@@ -27,13 +31,44 @@ body {
     background-color: #ffffff;
 }
 
+.dc-chart {
+    padding: 10px;
+}
+
+p {
+    padding: 5px 15px 5px 0px;
+}
+
 .section {
     border-radius: 10px;
     border: 1px solid #e6e6e6;
     margin: 30px 60px;
-    padding: 20px;
+    padding: 20px; 
     background-color: #ffffff;
     -moz-box-shadow: 2px 2px 20px 1px #F0F0F0; 
 	-webkit-box-shadow: 2px 2px 20px 1px #F0F0F0;    ; 
     box-shadow: 2px 2px 20px 3px #e0e0e0;    
 }
+
+@media only screen and (max-width: 768px) {
+    .section {
+        margin: 15px 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+    .page-title {
+        text-align: center;
+    }
+    .sub-title {
+        text-align: center;
+    }
+    .selector {
+        text-align: center !important;
+    }
+    #subjectSelector1 {
+        text-align: center;
+    }
+  }
+
+

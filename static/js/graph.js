@@ -1,5 +1,5 @@
 queue()
-    .defer(d3.csv, "data/assessment12.csv")
+    .defer(d3.csv, "data/assessment13.csv")
     .await(makeGraphs);
 
 // parse data to change it to integers. Is there a more efficient method?
@@ -59,13 +59,17 @@ function contextGender(ndx) {
 
     dc.pieChart("#gender")
         .height(250)
-        .radius(100)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(genderDimension)
         .group(genderComparison)
         .renderLabel(true)
+        .renderTitle(true)
         .legend(dc.legend())
+        .title(function() {
+            return 'test';
+        })
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0"]))
 }
@@ -76,7 +80,7 @@ function contextPupilPremium(ndx) {
 
     dc.pieChart("#pupilPremium")
         .height(250)
-        .radius(100)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(pupilPremiumDimension)
@@ -92,13 +96,13 @@ function contextSEND(ndx) {
 
     dc.pieChart("#SEND")
         .height(250)
-        .radius(100)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(sendDimension)
         .group(sendComparison)
         .legend(dc.legend())
-        //.legend(dc.legend().itemHeight(20).gap(5).x(200).y(60))
+        //.legend(dc.legend().itemHeight(20).gap(5).x(0).y(0))
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F"]))
 }
@@ -109,8 +113,8 @@ function readingGraph(ndx) {
     var group = readingDim.group();
 
     dc.pieChart('#readingGraph')
-        .height(230)
-        .radius(100)
+        .height(250)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(readingDim)
@@ -125,8 +129,8 @@ function writingGraph(ndx) {
     var writingComparison = writingDim.group();
 
     dc.pieChart("#writingGraph")
-        .height(230)
-        .radius(100)
+        .height(250)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(writingDim)
@@ -142,8 +146,8 @@ function mathsGraph(ndx) {
     var group = mathematicsDim.group();
 
     dc.pieChart("#mathsGraph")
-        .height(230)
-        .radius(100)
+        .height(250)
+        .radius(90)
         .innerRadius(0)
         .transitionDuration(1500)
         .dimension(mathematicsDim)
@@ -151,6 +155,7 @@ function mathsGraph(ndx) {
         .legend(dc.legend())
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"]))
+        
 }
 
 //cohort graphs 
@@ -221,7 +226,7 @@ function readingAverageGraph(ndx) {
     //console.log(readingAverageGraph());
   
     dc.barChart("#readingAverageGraph")
-        .width(350)
+        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(readingDim)
@@ -249,7 +254,6 @@ function writingAverageGraph(ndx) {
             return p;
         }
 
-        //What is a remover? And why is it needed??
         //Remove a Fact
         function remove_item (p, v) {
             p.count--;
@@ -271,7 +275,7 @@ function writingAverageGraph(ndx) {
     var averageWriting = writingDim.group().reduce(add_item, remove_item, initialise);
   
     dc.barChart("#writingAverageGraph")
-        .width(350)
+        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(writingDim)
@@ -289,6 +293,7 @@ function writingAverageGraph(ndx) {
 }
 
 function mathsAverageGraph(ndx) {
+    var xwidth = "Get the width here"
     var mathsDim = ndx.dimension(dc.pluck('Cohort'));
 
 //Add a fact
@@ -299,7 +304,6 @@ function mathsAverageGraph(ndx) {
             return p;
         }
 
-        //What is a remover? And why is it needed??
         //Remove a Fact
         function remove_item (p, v) {
             p.count--;
@@ -321,7 +325,7 @@ function mathsAverageGraph(ndx) {
     var averageMaths = mathsDim.group().reduce(add_item, remove_item, initialise);
 
      dc.barChart("#mathsAverageGraph")
-        .width(350)
+        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(mathsDim)
@@ -337,3 +341,31 @@ function mathsAverageGraph(ndx) {
         .colors(d3.scale.ordinal().range(["#FF5757"]))
         .yAxis().ticks(10); 
 }
+
+// $( window ).resize(function() {
+//   $( "#gender" ).resize( "<div>Handler for .resize() called.</div>" );
+
+// $(document).ready(function() {
+//     $( window ).resize(function() {
+//         document.getElementById("mathsAverageGraph").setAttribute("width", "150px");
+//     });
+// });
+
+// If this is the approach, we can do this! :)
+
+
+
+$( window ).resize(function() {
+        dc.renderAll();
+})
+
+
+
+
+// var xWidth = document.getElementById('mathsAverageGraph').offsetWidth;
+//   chart.width(xWidth)
+//     .transitionDuration(0);
+//   pie.transitionDuration(0);
+//   dc.renderAll();
+//   chart.transitionDuration(750);
+//   pie.transitionDuration(750);

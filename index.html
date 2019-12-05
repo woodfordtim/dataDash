@@ -34,15 +34,16 @@
 	</nav>
 
 	<main>
+
 		<section class="title">
 			<div class="container-fluid">
 				<div class="row">
 					<h1 class="col-md-6 page-title">School Data Dashboard</h1>
 				</div>
                 <div class="row">
-                    <p class="col-md-7 sub-title">Welcome back, Tim...</p>
-                    <div class="col-md-2 selector text-right"><h6>Select your cohort:</h6></div>
-                    <div class="col-md-2" id="subjectSelector1"></div>
+                    <p class="col-sm-12 col-md-7 sub-title">Welcome back, Tim...</p>
+                    <div class="col-sm-12 col-md-2 selector text-right"><h6>Select your cohort:</h6></div>
+                    <div class="col-sm-12 col-md-2" id="subjectSelector1"></div>
                 </div>
             </div>
 		</section>
@@ -51,16 +52,11 @@
 			<!--Comtext graphs -->
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-3"><h3>Context</h3><p>These graphs show the context spread of students. 
+					<div class="col-sm-12 col-md-12 col-lg-3"><h3>Context</h3><p>These graphs show the context spread of students. 
                     Click on the segments to filter by each context.</p></div> 
-					<div class="col-md-3 text-center" id="gender"></div>
-					<div class="col-md-3" id="SEND"></div>
-					<div class="col-md-3" id="pupilPremium"></div>
-				</div>
-				<div class="row">
-					<h5 class="col-md-3 offset-md-3">Gender</h5>
-					<h5 class="col-md-3">SEND</h5>
-					<h5 class="col-md-3">Pupil Premium</h5>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="gender"><h5 class="text-center">Gender</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="SEND"><h5 class="text-center">SEND</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="pupilPremium"><h5 class="text-center">Pupil Premium</h5></div>
 				</div>
 			</div>
 		</section>
@@ -70,21 +66,21 @@
             <!-- How do I center the graphs in order to align everything?-->
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-md-3"><h3>Subject Graphs</h3><p>These graphs show the attainment spread for each subject. 
+                    <div class="col-sm-12 col-md-12 col-lg-3"><h3>Subject Graphs</h3><p>These graphs show the attainment spread for each subject. 
                     Click on the segments to filter results.<br><br>
                     (3) Above average<br>
                     (2) Expected standard<br>
                     (1) Working towards<br>
                     (0) Below</p></div> 
-                    <div class="col-md-3" id="readingGraph"></div>
-					<div class="col-md-3 text-center" id="writingGraph"></div>
-					<div class="col-md-3" id="mathsGraph"></div>
+                    <div class="col-sm-12 col-md-4 col-lg-3" id="readingGraph"><h5 class="text-center">Reading</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3 " id="writingGraph"><h5 class="text-center">Writing</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsGraph"><h5 class="text-center">Mathematics</h5></div>
 				</div>
-				<div class="row">
-					<h5 class="col-md-3 offset-md-3">Reading</h5>
-					<h5 class="col-md-3">Writing</h5>
-					<h5 class="col-md-3">Mathematics</h5>
-				</div>
+				<!--<div class="row">
+					<h5 class="col-sm-12 col-md-4 col-lg-3 offset-lg-3">Reading</h5>
+					<h5 class="col-sm-12 col-md-4 col-lg-3">Writing</h5>
+					<h5 class="col-sm-12 col-md-4 col-lg-3">Mathematics</h5>
+				</div> -->
 			</div>
 		</section>
 
@@ -110,28 +106,29 @@
 			<!--Average graphs -->
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-md-3"><h3>Average by Cohort</h3><p>These graphs show the average attainment for 
+                    <div class="col-sm-12 col-md-12 col-lg-3"><h3>Average by Cohort</h3><p>These graphs show the average attainment for 
                     each cohort with <b>2</b> being the expected standard. Click on the bars to filter results.</p></div> 
-					<div class="col-md-3" id="readingAverageGraph"></div>
-					<div class="col-md-3" id="writingAverageGraph"></div>
-					<div class="col-md-3" id="mathsAverageGraph"></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="readingAverageGraph"><h5 class="text-center">Reading</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="writingAverageGraph"><h5 class="text-center">Writing</h5></div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsAverageGraph"><h5 class="text-center">Mathematics</h5></div>
 				</div>
-                <div class="row">
-					<h5 class="col-md-3 offset-md-3">Average for Reading</h5>
-					<h5 class="col-md-3">Average for Writing</h5>
-					<h5 class="col-md-3">Average for Mathematics</h5>
-				</div>
+                <!-- <div class="row">
+					<h5 class="col-sm-12 col-md-4 col-lg-3 offset-lg-3">Average for Reading</h5>
+					<h5 class="col-sm-12 col-md-4 col-lg-3">Average for Writing</h5>
+					<h5 class="col-sm-12 col-md-4 col-lg-3">Average for Mathematics</h5>
+				</div> -->
 			</div>
 		</section>
 
+    </main>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
 		<script type="text/javascript" src="static/js/d3.min.js"></script>
 		<script type="text/javascript" src="static/js/crossfilter.min.js"></script>
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.1.5/dc.min.js"></script> -->
 		<script type="text/javascript" src="static/js/dc.min.js"></script>
 		<script type="text/javascript" src="static/js/queue.min.js"></script>
 		<script type="text/javascript" src="static/js/graph.js"></script>
-
-	</main>
 
 
 </body>
