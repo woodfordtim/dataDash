@@ -53,21 +53,18 @@ p {
 @media only screen and (max-width: 768px) {
     .section {
         margin: 15px 15px;
+    }
+    .selector {
+        text-align: left !important;
   }
 }
 
 @media only screen and (max-width: 480px) {
-    .page-title {
-        text-align: center;
-    }
-    .sub-title {
+    .page-title, .sub-title, #subjectSelector1 {
         text-align: center;
     }
     .selector {
         text-align: center !important;
-    }
-    #subjectSelector1 {
-        text-align: center;
     }
   }
 
