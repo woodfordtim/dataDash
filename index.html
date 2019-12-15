@@ -17,20 +17,6 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<a class="navbar-brand" href="#">School Data Dashboard</a>
-
-		<div class="collapse navbar-collapse" id="navbarColor01">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Support</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Contact Us</a>
-				</li>
-			</ul>
-		</div>
 	</nav>
 
 	<main>
@@ -40,96 +26,110 @@
 				<div class="row">
 					<h2 class="col-md-6 page-title">Grange Hill Primary School</h2>
 				</div>
-                <div class="row">
-                    <p class="col-sm-12 col-md-7 sub-title">Welcome back to you Data Dashboard, Tim...</p>
-                    <div class="col-xs-12 col-sm-3 col-md-2 selector text-right"><h6>Select your cohort:</h6></div>
-                    <div class="col-xs-12 col-sm-3 col-md-2" id="subjectSelector1"></div>
-                </div>
-            </div>
+				<div class="row">
+					<p class="col-sm-12 col-md-7 sub-title">Welcome back to your Data Dashboard, Tim...</p>
+					<div class="col-xs-12 col-sm-3 col-md-2 selector text-right">
+						<h6>Select your cohort:</h6>
+					</div>
+					<div class="col-xs-12 col-sm-3 col-md-2" id="subjectSelector1"></div>
+				</div>
+			</div>
 		</section>
 
 		<section class="section">
 			<!--Comtext graphs -->
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-12 col-md-12 col-lg-3"><h3>Context</h3><p>These graphs show the context spread of students. 
-                    Click on the segments to filter by each context.</p></div> 
-					<div class="col-sm-12 col-md-4 col-lg-3" id="gender"><h5 class="text-center">Gender</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3" id="SEND"><h5 class="text-center">SEND</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3" id="pupilPremium"><h5 class="text-center">Pupil Premium</h5></div>
+					<div class="col-sm-12 col-md-12 col-lg-3">
+						<h3>Context</h3>
+						<p>These graphs show the context spread of students.
+							Click on the segments to filter by each context.</p>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="gender">
+						<h5 class="text-center">Gender</h5>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="SEND">
+						<h5 class="text-center">SEND</h5>
+						<div class="help-tip">
+							<p>SEND is an abbreviation for Special Educational Needs and disabilities. Students
+                            identified as SEND Support are fully funded by the school whereas as students who have
+                            greater need and have an EHCP (Educational Health Care Plan) receive additional funding from the 
+                            local authority.
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="pupilPremium">
+						<h5 class="text-center">Pupil Premium</h5>
+						<div class="help-tip">
+							<p>Pupil Premium are those students who have been identified as financially disadvantaged. Schools
+                            receive additional funding for students identified as Pupil Premium and are accountable for their
+                            achievement. Strategies to raise attainemnt for these students must be published on the school
+                            website.
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 
 		<section class="section">
 			<!--Subject graphs -->
-            <!-- How do I center the graphs in order to align everything?-->
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-3"><h3>Subject Graphs</h3><p>These graphs show the attainment spread for each subject. 
-                    Click on the segments to filter results.<br><br>
+					<div class="col-sm-12 col-md-12 col-lg-3">
+						<h3>Subject Graphs</h3>
+						<p>These graphs show the attainment spread for each subject.
+							Click on the segments to filter results.<br><br>
                     (3) Above average<br>
                     (2) Expected standard<br>
                     (1) Working towards<br>
-                    (0) Below</p></div> 
-                    <div class="col-sm-12 col-md-4 col-lg-3" id="readingGraph"><h5 class="text-center">Reading</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3 " id="writingGraph"><h5 class="text-center">Writing</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsGraph"><h5 class="text-center">Mathematics</h5></div>
+                    (0) Below</p>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="readingGraph">
+						<h5 class="text-center">Reading</h5>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3 " id="writingGraph">
+						<h5 class="text-center">Writing</h5>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsGraph">
+						<h5 class="text-center">Mathematics</h5>
+					</div>
 				</div>
-				<!--<div class="row">
-					<h5 class="col-sm-12 col-md-4 col-lg-3 offset-lg-3">Reading</h5>
-					<h5 class="col-sm-12 col-md-4 col-lg-3">Writing</h5>
-					<h5 class="col-sm-12 col-md-4 col-lg-3">Mathematics</h5>
-				</div> -->
 			</div>
 		</section>
-
-		<!-- <section class="section">
-			Cohort graphs 
-			<div class="container-fluid">
-				<div class="row">
-					<h2 class="col-md-offset-5">Cohort Graphs</h2>
-				</div>
-				<div class="row">
-					<h5 class="col-md-4">Skipper</h5>
-					<h5 class="col-md-4">Admiral</h5>
-				</div>
-				<div class="row">
-					<div class="col-md-4" id="skipperGraph"></div>
-					<div class="col-md-4" id=""></div>
-					<div class="col-md-4" id=""></div>
-				</div>
-			</div>
-		</section> -->
 
 		<section class="section">
 			<!--Average graphs -->
 			<div class="container-fluid">
 				<div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-3"><h3>Average by Cohort</h3><p>These graphs show the average attainment for 
-                    each cohort with <b>2</b> being the expected standard. Click on the bars to filter results.</p></div> 
-					<div class="col-sm-12 col-md-4 col-lg-3" id="readingAverageGraph"><h5 class="text-center">Reading</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3" id="writingAverageGraph"><h5 class="text-center">Writing</h5></div>
-					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsAverageGraph"><h5 class="text-center">Mathematics</h5></div>
+					<div class="col-sm-12 col-md-12 col-lg-3">
+						<h3>Average by Cohort</h3>
+						<p>These graphs show the average attainment for
+							each cohort with <b>2.0</b> being the expected standard. Click on the bars to filter
+							results.</p>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="readingAverageGraph">
+						<h5 class="text-center">Reading</h5>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="writingAverageGraph">
+						<h5 class="text-center">Writing</h5>
+					</div>
+					<div class="col-sm-12 col-md-4 col-lg-3" id="mathsAverageGraph">
+						<h5 class="text-center">Mathematics</h5>
+					</div>
 				</div>
-                <!-- <div class="row">
-					<h5 class="col-sm-12 col-md-4 col-lg-3 offset-lg-3">Average for Reading</h5>
-					<h5 class="col-sm-12 col-md-4 col-lg-3">Average for Writing</h5>
-					<h5 class="col-sm-12 col-md-4 col-lg-3">Average for Mathematics</h5>
-				</div> -->
 			</div>
 		</section>
 
-    </main>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-		<script type="text/javascript" src="static/js/d3.min.js"></script>
-		<script type="text/javascript" src="static/js/crossfilter.min.js"></script>
-		<script type="text/javascript" src="static/js/dc.min.js"></script>
-		<script type="text/javascript" src="static/js/queue.min.js"></script>
-		<script type="text/javascript" src="static/js/graph.js"></script>
+	</main>
 
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="static/js/d3.min.js"></script>
+	<script type="text/javascript" src="static/js/crossfilter.min.js"></script>
+	<script type="text/javascript" src="static/js/dc.min.js"></script>
+	<script type="text/javascript" src="static/js/queue.min.js"></script>
+	<script type="text/javascript" src="static/js/graph.js"></script>
 
 </body>
 

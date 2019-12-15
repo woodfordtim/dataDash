@@ -8,13 +8,7 @@ function makeGraphs(error, schoolData) {
 
     schoolData.forEach(function(d){
         d.Reading = parseInt(d.Reading)
-    }),
-
-    schoolData.forEach(function(d){
         d.Writing = parseInt(d.Writing)
-    }),
-
-    schoolData.forEach(function(d){
         d.Mathematics = parseInt(d.Mathematics)
     })
 
@@ -30,9 +24,6 @@ function makeGraphs(error, schoolData) {
     readingGraph(ndx);
     writingGraph(ndx);
     mathsGraph(ndx);
-
-    //cohort graphs
-    //skipperGraph(ndx);
 
     //average graphs
     readingAverageGraph(ndx);
@@ -102,7 +93,6 @@ function contextSEND(ndx) {
         .dimension(sendDimension)
         .group(sendComparison)
         .legend(dc.legend())
-        //.legend(dc.legend().itemHeight(20).gap(5).x(0).y(0))
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F"]))
 }
@@ -136,7 +126,6 @@ function writingGraph(ndx) {
         .dimension(writingDim)
         .group(writingComparison)
         .legend(dc.legend())
-        //.legend(dc.legend().itemHeight(20).gap(5).x(10).y(60))
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"]))
 }
@@ -154,41 +143,8 @@ function mathsGraph(ndx) {
         .group(group)
         .legend(dc.legend())
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
-        .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"]))
-        
+        .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"])) 
 }
-
-//cohort graphs 
-
-//This section is supposed to show each cohort so that comparisons can be made between cohorts. This helps 
-//to identify which cohort is doing better or worse than others. The way my current dashboard is set up only
-//allows me to see one cohort at a time- which is ok- but was also hoping for the former but have had trouble
-//trying to code this out!
-
-// why does this graph not return any 0s from Skipper 'Reading' data? Something is wrong with this code block
-// function skipperGraph(ndx) {
-//     var readingDimension = ndx.dimension(dc.pluck("Reading"));
-//     var standard_achieved_Skipper = readingDimension.group().reduceSum(function (d) {
-//         if (d.Cohort === 'Skipper') {
-//             return +d.Reading;
-//         } else {
-//             return 0;
-//         }
-//     });
-
-    //how do I check code with a console.log?
-    //console.log(skipperGraph);
-
-//     dc.pieChart("#skipperGraph")
-//         .height(300)
-//         .radius(90)
-//         .innerRadius(30)
-//         .transitionDuration(1500)
-//         .dimension(readingDimension)
-//         .group(standard_achieved_Skipper)
-//         .legend(dc.legend())
-//         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; }) 
-// }
 
 //average graphs 
 function readingAverageGraph(ndx) {
@@ -202,7 +158,6 @@ function readingAverageGraph(ndx) {
             return p;
         }
 
-        //What is a remover? And why is it needed??
         //Remove a Fact
         function remove_item (p, v) {
             p.count--;
@@ -222,11 +177,8 @@ function readingAverageGraph(ndx) {
         }
 
     var averageReading = readingDim.group().reduce(add_item, remove_item, initialise);
-
-    //console.log(readingAverageGraph());
   
     dc.barChart("#readingAverageGraph")
-        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(readingDim)
@@ -275,7 +227,6 @@ function writingAverageGraph(ndx) {
     var averageWriting = writingDim.group().reduce(add_item, remove_item, initialise);
   
     dc.barChart("#writingAverageGraph")
-        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(writingDim)
@@ -325,7 +276,6 @@ function mathsAverageGraph(ndx) {
     var averageMaths = mathsDim.group().reduce(add_item, remove_item, initialise);
 
      dc.barChart("#mathsAverageGraph")
-        //.width(350)
         .height(250)
         .margins({ top: 10, right: 60, bottom: 40, left: 60 })
         .dimension(mathsDim)
@@ -342,30 +292,6 @@ function mathsAverageGraph(ndx) {
         .yAxis().ticks(10); 
 }
 
-// $( window ).resize(function() {
-//   $( "#gender" ).resize( "<div>Handler for .resize() called.</div>" );
-
-// $(document).ready(function() {
-//     $( window ).resize(function() {
-//         document.getElementById("mathsAverageGraph").setAttribute("width", "150px");
-//     });
-// });
-
-// If this is the approach, we can do this! :)
-
-
-
 $( window ).resize(function() {
         dc.renderAll();
 })
-
-
-
-
-// var xWidth = document.getElementById('mathsAverageGraph').offsetWidth;
-//   chart.width(xWidth)
-//     .transitionDuration(0);
-//   pie.transitionDuration(0);
-//   dc.renderAll();
-//   chart.transitionDuration(750);
-//   pie.transitionDuration(750);
