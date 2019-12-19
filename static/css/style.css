@@ -50,6 +50,8 @@ p {
     box-shadow: 2px 2px 20px 3px #e0e0e0;    
 }
 
+
+/* This css for the help-tip been copied and pasted: from https://tutorialzine.com/2014/07/css-inline-help-tips */
 .help-tip{
     position: absolute;
     top: 18px;
@@ -76,7 +78,6 @@ p {
 
     -webkit-animation: fadeIn 0.3s ease-in-out;
     animation: fadeIn 0.3s ease-in-out;
-
 }
 
 .help-tip p{    /* The tooltip */
@@ -133,6 +134,9 @@ p {
     100% { opacity:100%; }
 }
 
+/* ---------- end of copied and pasted ccss  ----------- */
+
+/* ---------Media Queries ------------------------------ */
 @media only screen and (max-width: 768px) {
     .section {
         margin: 15px 15px;

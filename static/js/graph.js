@@ -2,7 +2,7 @@ queue()
     .defer(d3.csv, "data/assessment13.csv")
     .await(makeGraphs);
 
-// parse data to change it to integers. Is there a more efficient method?
+// parse data to change it to integers. Now structure more efficiently (supported by mentor)
 function makeGraphs(error, schoolData) {
     var ndx = crossfilter(schoolData);
 
@@ -12,20 +12,20 @@ function makeGraphs(error, schoolData) {
         d.Mathematics = parseInt(d.Mathematics)
     })
 
-    //selectors
+    //selector - this calls the funtion for my cohort selector dropdown menu
     subjectSelector1(ndx);
 
-    //context graphs
+    //context graphs - these call the functions for my 3 contect pie charts
     contextGender(ndx);
     contextPupilPremium(ndx);
     contextSEND(ndx);
 
-    //subject graphs
+    //subject graphs - these call the functions for my 3 subject charts
     readingGraph(ndx);
     writingGraph(ndx);
     mathsGraph(ndx);
 
-    //average graphs
+    //average graphs - these call the functions for my 3 average charts
     readingAverageGraph(ndx);
     writingAverageGraph(ndx);
     mathsAverageGraph(ndx);
@@ -37,13 +37,10 @@ function makeGraphs(error, schoolData) {
 function subjectSelector1(ndx) {
     dim = ndx.dimension(dc.pluck("Cohort"));
     group = dim.group();
-
-    dc.selectMenu("#subjectSelector1")
-        .dimension(dim)
-        .group(group); 
 } 
 
-//context graphs
+//CONTEXT CHARTS
+//context chart for gender
 function contextGender(ndx) {
     var genderDimension = ndx.dimension(dc.pluck('Gender'));
     var genderComparison = genderDimension.group();
@@ -64,7 +61,7 @@ function contextGender(ndx) {
         .label(function(d){  return d.value + " (" +(d.value / ndx.groupAll().reduceCount().value() * 100).toFixed(0) + "%)"; })
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0"]))
 }
-
+//context pie chart for 'Pupil Premium'
 function contextPupilPremium(ndx) {
     var pupilPremiumDimension = ndx.dimension(dc.pluck('Pupil Premium'));
     var pupilPremiumComparison = pupilPremiumDimension.group();
@@ -81,6 +78,7 @@ function contextPupilPremium(ndx) {
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F"]))
 }
 
+//context pie chart for students with special educational needs (SEND)
 function contextSEND(ndx) {
     var sendDimension = ndx.dimension(dc.pluck('SEND'));
     var sendComparison = sendDimension.group();
@@ -97,7 +95,8 @@ function contextSEND(ndx) {
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F"]))
 }
 
-//subject graphs
+//SUBJECT CHARTS
+//reading subject chart
 function readingGraph(ndx) {
     var readingDim = ndx.dimension(dc.pluck('Reading'));
     var group = readingDim.group();
@@ -114,6 +113,7 @@ function readingGraph(ndx) {
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"]))
 }
 
+//writing subject chart
 function writingGraph(ndx) {
     var writingDim = ndx.dimension(dc.pluck('Writing'));
     var writingComparison = writingDim.group();
@@ -130,6 +130,7 @@ function writingGraph(ndx) {
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"]))
 }
 
+//mathematics subject chart
 function mathsGraph(ndx) {
     var mathematicsDim = ndx.dimension(dc.pluck('Mathematics'));
     var group = mathematicsDim.group();
@@ -146,7 +147,8 @@ function mathsGraph(ndx) {
         .colors(d3.scale.ordinal().range(["#3B759A", "#80CCC0", "#E7983F", "#FF5757"])) 
 }
 
-//average graphs 
+//AVERAGE CHARTS
+//reading average chart
 function readingAverageGraph(ndx) {
     var readingDim = ndx.dimension(dc.pluck('Cohort'));
 
@@ -195,6 +197,7 @@ function readingAverageGraph(ndx) {
         .yAxis().ticks(10);
 }
 
+//writing average chart
 function writingAverageGraph(ndx) {
     var writingDim = ndx.dimension(dc.pluck('Cohort'));
 
@@ -243,8 +246,8 @@ function writingAverageGraph(ndx) {
         .yAxis().ticks(10); 
 }
 
+//mathematics average chart
 function mathsAverageGraph(ndx) {
-    var xwidth = "Get the width here"
     var mathsDim = ndx.dimension(dc.pluck('Cohort'));
 
 //Add a fact
@@ -292,6 +295,8 @@ function mathsAverageGraph(ndx) {
         .yAxis().ticks(10); 
 }
 
+//JQuery - to make the charts responsive- when the window size changes the charts redraw
+//Supported by Tutor Support 
 $( window ).resize(function() {
         dc.renderAll();
 })

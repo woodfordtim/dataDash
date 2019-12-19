@@ -6,7 +6,7 @@ https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css
 
 
 #School Data Dashboard  
-This is your School Data Dashboard that shows the latest assessment information for (a fictional) school,
+This is a School Data Dashboard that shows the latest assessment information for (a fictional) school,
 Grange Hill Primary School. The information enables the school to analyse the achievement of the students across
 the range of core subjects (Reading, Writing and Mathematics) and compare different groups using context filters.
 
@@ -16,18 +16,47 @@ raise achievement where the greatest support is needed.
 The average graphs, in section 3, enable the school to compare the overall attainment in each cohort by subject.
 
 ##UX
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+#User Stories
+As a teacher I can analyse the performance my cohort so that I am able to identify strengths and areas to focus my teaching
+interventions and which subject to develop my skills in.
 
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
+Ad a school leader I can compare the performance of cohorts using the selector tool or comparing averages 
+so that I can target school resources for maximum proogress in student's outcomes.
 
-As a user type, I want to perform an action, so that I can achieve a goal.
+As a school leader I can view the whole school performance so that I can analyse the effectiveness of school strategies 
+and adapt accordingly. 
+
+As the school's special educational needs coordinator and I can analyse the performance of children with special needs and
+compare to children who do not have special needs so that I know how to target my staff resources.
+
+As the school's English Subject Leader I can see how well students are performing in reading and writing and see which cohorts 
+or teachers may need great support or training.
+
+As a consultant (or inspector) I can analyse the performance of 'Pupil Premium' children to see how well the school is supporting
+students who are disadvantaged and see how well the school is spending its 'Pupil Premium' funding. This is so that I can provide 
+guidance to the school.
+
+
 This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
 
-Features
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+##Features
 
-Existing Features
-Feature 1 - allows users X to achieve Y, by having them fill out Z
+#Feature 1 - Cohort Selector
+This allows all users to select a specific cohort by using the dropdown menu.
+
+#Feature 2 - Context Filters
+This allows users to analyse the context of the school (eg how many boys compared to girls) and then filter
+by clicking on the chart segments to compare data with regars to that specific selection.
+
+#Feature 3 - Subject Attainment Spread
+This allows users to analyse the attainment spread of students for each subject. Results can be filtered by cohort using 
+the selector (above) or by clicking one of the chart segments to filter further still. The latter enbales users to see
+how well students perform across more than one subbject.
+
+#Feature 4 - Cohort Average Comparisons
+This allows school leaders to compare cohorts by average attainment (based on 2 being equal to the minimum expectation). You can click on the bars or use 
+selector to filter by cohort.
+
 ...
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
 
