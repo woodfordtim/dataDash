@@ -1,4 +1,4 @@
-#School Data Dashboard  
+# School Data Dashboard  
 This is a School Data Dashboard that shows the latest assessment information for (a fictional) school,
 Grange Hill Primary School. The mains users would be school leaders, team leaders, teachers and possibly inspectors.
 The information enables the school to analyse the achievement of the students across the range of 
@@ -9,8 +9,8 @@ raise achievement where the greatest support is needed.
 
 The average graphs, in section 3, enable the school to compare the overall attainment in each cohort by subject.
 
-##UX
-#User Stories
+## UX
+### User Stories
 As a teacher I can analyse the performance my cohort so that I am able to identify strengths and areas to focus my teaching
 interventions and which subject to develop my skills in.
 
@@ -30,44 +30,46 @@ As a consultant (or inspector) I can analyse the performance of 'Pupil Premium' 
 students who are disadvantaged and see how well the school is spending its 'Pupil Premium' funding. This is so that I can provide 
 guidance to the school.
 
+### Wireframes - links from Adobe XD
+https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/
+https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/
 
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+PDF files also available in the project folders.
 
-##Features
+## Features
 
-#Feature 1 - Cohort Selector
+### Feature 1 - Cohort Selector
 This allows all users to select a specific cohort by using the dropdown menu.
 
-#Feature 2 - Context Filters
+### Feature 2 - Context Filters
 This allows users to analyse the context of the school (eg how many boys compared to girls) and then filter
 by clicking on the chart segments to compare data with regars to that specific selection.
 
-#Feature 3 - Subject Attainment Spread
+### Feature 3 - Subject Attainment Spread
 This allows users to analyse the attainment spread of students for each subject. Results can be filtered by cohort using 
 the selector (above) or by clicking one of the chart segments to filter further still. The latter enbales users to see
 how well students perform across more than one subbject.
 
-#Feature 4 - Cohort Average Comparisons
+### Feature 4 - Cohort Average Comparisons
 This allows school leaders to compare cohorts by average attainment (based on 2 being equal to the minimum expectation). You can click on the bars or use 
 selector to filter by cohort.
 
-##Technologies Used
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+## Technologies Used
 
-#d3 / dc and Crossfilter
+## d3 / dc and Crossfilter
 The project uses d3, dc and crossfilter libraries to create the charts and make turn them into interactive filtering tools.
 
-#JQuery
+## JQuery
 The project uses JQuery to create an event that makes the website responsive.
 
-#Bootstrap / Bootswatch
+## Bootstrap / Bootswatch
 The project uses the Yeti theme from Bootswatch which benefits from the Bootstrap library.
 
 https://www.bootstrapcdn.com/bootswatch/
 https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css
 
 
-##Testing
+## Testing
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that 
 the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure 
 that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
@@ -77,26 +79,26 @@ Whenever it is feasible, prefer to automate your tests, and if you've done so, p
 For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. 
 A particularly useful form for describing your testing process is via scenarios, such as:
 
-#Test 1: Use selector tool to see Year 2 students only
+###  Test 1: Use selector tool to see Year 2 students only
 Try to select Year 2 cohort from the dropdown selector and all charts transition to show to data for Y2 onlt.
 
-#Test 2: Use Context filter to see boys only
+### Test 2: Use Context filter to see boys only
 Try to view boys assessment dat only by clking on the relevant pie sgement on the gender chart and all charts transition to 
 reveal data for boys only, including other context graphs, subjects and average charts.
 
-#Test 3: Compare average assessment data for children with an EHCP (Educational Health Care Plan)
+### Test 3: Compare average assessment data for children with an EHCP (Educational Health Care Plan)
 Use the context selector to click on the segment that represents 'EHCP' and the average charts for each subject show students
 with an EHCP only.
 
-#Test 4: Responsiveness
+### Test 4: Responsiveness
 Chart Sections adpat according to screen size appropriately. JQuery has been used to identify changes in screen sizes and react by 
 causing the charts to re-render and adapt accordingly. Boostrap and css media queries have been used to support the changes 
 in html structure in order to look clean and efficient on desktop, tablet and mobile. The site has been tested on an Macbook Pro, iPad and iPhone 6
 as well as using the Chrome inspector tool to view on various screen sizes.
 
-##Bugs and Problems
+## Bugs and Problems
 
-#Crossfilter and dc limitations
+### Crossfilter and dc limitations
 I initially set out to have one chart per cohort and be able to select subjects via a dropdown menu or button. This was more challenging 
 than I thought it would be. d3 was uanable to read the data in the way I wanted despite hours of research and attempts at creating
 charts with limted success. There ways around this such as creating several website pages and clicking through using a button buttonI decided
@@ -108,37 +110,43 @@ During the project I found very little documentation and guidance in d3, dc and 
 available and Tutor Support but to gain a deeper understanding so that I could manipulate the codeto achiev
 my end goal proved to be (fun but) challenging.
 
-#The importance of the 'value accessor' in the average charts
+### The importance of the 'value accessor' in the average charts
 It took me a long time to realise that I needed the value accessor to ensure the average charts returned any response.
 
-#parse data to change ot to integers
+### parse data to change ot to integers
 Intitially I tried changing the data in my google sheets file to ensure the format was integers but despite this 
 realised that I needed to parse the data into integers using a forEach loop due to the structure of the data file.
 
-#Challenges with JQuery for responsiveness
+### Challenges with JQuery for responsiveness
 Trying to make the site responsive using the JQuery events presented challenges and I drew upon support from the Code Institute
 Tutor Support. It took many hours and going back and forth with a number of differne tutors before settling on what looks like
 the simplest two lines of code possible. It took a few more adapatations following their support, such as, playing with the 
 chart radii and heights to see what works best and looks cleanest. With the help of Tutor Support I adpated the Bootstrap structure
 for tablets so that the charts did not overlap each other.
 
-#Pie Chart labelling
+### Pie Chart labelling
 For the purpose of my site I wanted very specific labelling for each of the chart segments. I eventually adapted some code I found
 on Stack Overflow to meet my end goal of showing % and number of incidents, i.e. students.
 
-#Centering / aligning charts and legends
+### Centering / aligning charts and legends
 Due to the nature of dc it was a challengint co align the charts correctly with html headings and without overlapping legends. I 
 played with the legend x and y position to get this right but it fell to using css - structuring the columns and padding to 
 achieve (as close to as I can get) the desirable appearance. 
 
-#dc version
+### dc version
 At the very beginning I had trouble parsing the data file due to the version of dc that I was using. With the help of my mentor
 we tried an earlier version of dc which was ensured success.
 
-##Deployment
+### Deployment
 The site was deployed using GitHub Pages.
 
-##Credits
+## New Features to follow in the next version
+* Add in the ability to reset all filters with a reset button
+* Add in landing page, contact page and support
+* Improve responsive design by smoothing / improving how charts re-draw
+* Fix the help-tip for iPad and other devices with touch screen.
+
+## Credits
 * https://tutorialzine.com/2014/07/css-inline-help-tips (for the little question mark to help explain education abbreviations)
 * Code Institute lessons on d3, dc and crossfilter, including GitHub example code. Especially the mini-project on Professors 
 data dashboard.
