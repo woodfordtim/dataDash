@@ -11,33 +11,32 @@ The average graphs, in section 3, enable the school to compare the overall attai
 
 ## UX
 ### User Stories
-As a teacher I can analyse the performance my cohort so that I am able to identify strengths and areas to focus my teaching
+* As a teacher I can analyse the performance my cohort so that I am able to identify strengths and areas to focus my teaching
 interventions and which subject to develop my skills in.
 
-Ad a school leader I can compare the performance of cohorts using the selector tool or comparing averages 
+* As a school leader I can compare the performance of cohorts using the selector tool or comparing averages 
 so that I can target school resources for maximum proogress in student's outcomes.
 
-As a school leader I can view the whole school performance so that I can analyse the effectiveness of school strategies 
+* As a school leader I can view the whole school performance so that I can analyse the effectiveness of school strategies 
 and adapt accordingly. 
 
-As the school's special educational needs coordinator and I can analyse the performance of children with special needs and
+* As the school's special educational needs coordinator and I can analyse the performance of children with special needs and
 compare to children who do not have special needs so that I know how to target my staff resources.
 
-As the school's English Subject Leader I can see how well students are performing in reading and writing and see which cohorts 
+* As the school's English Subject Leader I can see how well students are performing in reading and writing and see which cohorts 
 or teachers may need great support or training.
 
-As a consultant (or inspector) I can analyse the performance of 'Pupil Premium' children to see how well the school is supporting
+* As a consultant (or inspector) I can analyse the performance of 'Pupil Premium' children to see how well the school is supporting
 students who are disadvantaged and see how well the school is spending its 'Pupil Premium' funding. This is so that I can provide 
 guidance to the school.
 
 ### Wireframes - links from Adobe XD
-https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/
-https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/
+[Wireframe v1] (https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
+[Wireframe v2] (https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
 
 PDF files also available in the project folders.
 
 ## Features
-
 ### Feature 1 - Cohort Selector
 This allows all users to select a specific cohort by using the dropdown menu.
 
@@ -55,30 +54,19 @@ This allows school leaders to compare cohorts by average attainment (based on 2 
 selector to filter by cohort.
 
 ## Technologies Used
-
-## d3 / dc and Crossfilter
+### d3 / dc and Crossfilter
 The project uses d3, dc and crossfilter libraries to create the charts and make turn them into interactive filtering tools.
 
-## JQuery
+### JQuery
 The project uses JQuery to create an event that makes the website responsive.
 
-## Bootstrap / Bootswatch
+### Bootstrap / Bootswatch
 The project uses the Yeti theme from Bootswatch which benefits from the Bootstrap library.
 
 https://www.bootstrapcdn.com/bootswatch/
 https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css
 
-
 ## Testing
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that 
-the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure 
-that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. 
-A particularly useful form for describing your testing process is via scenarios, such as:
-
 ###  Test 1: Use selector tool to see Year 2 students only
 Try to select Year 2 cohort from the dropdown selector and all charts transition to show to data for Y2 onlt.
 
@@ -96,8 +84,11 @@ causing the charts to re-render and adapt accordingly. Boostrap and css media qu
 in html structure in order to look clean and efficient on desktop, tablet and mobile. The site has been tested on an Macbook Pro, iPad and iPhone 6
 as well as using the Chrome inspector tool to view on various screen sizes.
 
-## Bugs and Problems
+### Device Testing
+The application loads well on all thre devices testes, which include iPhone 6 and iPad Pro (9 inch version). It appears that the tooltip does not
+work on these devices so this will need some reworking in the next version.
 
+## Bugs and Problems
 ### Crossfilter and dc limitations
 I initially set out to have one chart per cohort and be able to select subjects via a dropdown menu or button. This was more challenging 
 than I thought it would be. d3 was uanable to read the data in the way I wanted despite hours of research and attempts at creating
@@ -138,7 +129,13 @@ At the very beginning I had trouble parsing the data file due to the version of 
 we tried an earlier version of dc which was ensured success.
 
 ### Deployment
-The site was deployed using GitHub Pages.
+#### GitHub Pages
+The site was deployed using GitHub Pages. To do this from within the GitHub repository follow the `settings` link and then scroll to 
+the bottom of the page to find GitHub pages. Select `master branch` as the source and then click save.
+
+#### Local Deployment
+You can also deploy the project locally by following the `clone / download` link from the main repository page and copy the link. 
+Then, open up a new terminal in your IDE and type 'git clone' followed directly by the copied link.
 
 ## New Features to follow in the next version
 * Add in the ability to reset all filters with a reset button
