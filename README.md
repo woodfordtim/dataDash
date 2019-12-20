@@ -31,8 +31,8 @@ students who are disadvantaged and see how well the school is spending its 'Pupi
 guidance to the school.
 
 ### Wireframes - links from Adobe XD
-[Wireframe v1] (https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
-[Wireframe v2] (https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
+[Wireframe v1](https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
+[Wireframe v2](https://xd.adobe.com/view/1ee6e074-8697-49e8-4e0e-4ded2cb78a95-68d7/)
 
 PDF files also available in the project folders.
 
@@ -144,7 +144,7 @@ Then, open up a new terminal in your IDE and type 'git clone' followed directly 
 * Fix the help-tip for iPad and other devices with touch screen.
 
 ## Credits
-* https://tutorialzine.com/2014/07/css-inline-help-tips (for the little question mark to help explain education abbreviations)
+* https://tutorialzine.com/2014/07/css-inline-help-tips (for the little tooltip question mark to help explain education abbreviations)
 * Code Institute lessons on d3, dc and crossfilter, including GitHub example code. Especially the mini-project on Professors 
 data dashboard.
 * Boostrap / Bootswatch- Yeti theme
