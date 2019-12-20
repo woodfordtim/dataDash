@@ -133,6 +133,8 @@ we tried an earlier version of dc which was ensured success.
 The site was deployed using GitHub Pages. To do this from within the GitHub repository follow the `settings` link and then scroll to 
 the bottom of the page to find GitHub pages. Select `master branch` as the source and then click save.
 
+[School Data Dashboard](https://woodfordtim.github.io/dataDash/)
+
 #### Local Deployment
 You can also deploy the project locally by following the `clone / download` link from the main repository page and copy the link. 
 Then, open up a new terminal in your IDE and type 'git clone' followed directly by the copied link.
