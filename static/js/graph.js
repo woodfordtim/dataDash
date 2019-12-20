@@ -37,6 +37,10 @@ function makeGraphs(error, schoolData) {
 function subjectSelector1(ndx) {
     dim = ndx.dimension(dc.pluck("Cohort"));
     group = dim.group();
+
+    dc.selectMenu("#subjectSelector1")
+        .dimension(dim)
+        .group(group); 
 } 
 
 //CONTEXT CHARTS
